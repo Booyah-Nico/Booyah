@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { act } from 'react-dom/test-utils';
 
-//getComment()
+//__getComments
 export const __getComments = createAsyncThunk(
   'comments/getComments',
   async (payload, thunkAPI) => {
@@ -28,7 +28,7 @@ export const __postComment = createAsyncThunk(
   }
 );
 
-//deleteComment
+//__deleteComment
 export const __deleteComment = createAsyncThunk(
   'comments/deleteComments',
   async (payload, thunkAPI) => {
@@ -36,6 +36,19 @@ export const __deleteComment = createAsyncThunk(
       await axios.delete(`http://localhost:3001/comments/${payload}`);
       console.log('페이로드', payload);
       return thunkAPI.fulfillWithValue(payload);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+//__patchComment
+export const __patchComment = createAsyncThunk(
+  'comments/patcheComments',
+  async (payload, thunkAPI) => {
+    try {
+      const data = await axios.patch('http://localhost:3001/comments', payload);
+      return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -90,6 +103,19 @@ export const CommentsSlice = createSlice({
       );
     },
     [__deleteComment.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+
+    //수정
+    [__patchComment.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__patchComment.fulfilled]: (state, action) => {
+      state.isLoading = true;
+      state.comments.content = action.payload.content;
+    },
+    [__patchComment.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },

@@ -1,15 +1,39 @@
 {
   "comments": [
     {
-      "id": "5b6e3851-4cc5-4346-a4c9-6eca1a5d43ed",
-      "name": "한빛",
-      "content": "니꼬샘 최고!!!",
+      "id": "d775ea75-5594-4be8-a5e6-f3747434adef",
+      "name": "제니",
+      "content": "저도 코딩하면 잘 할 수 있을까요?",
       "password": "1234"
     },
     {
-      "id": "7f7b7f17-3b82-4e3f-8548-fb59490575f3",
-      "name": "향훈",
-      "content": "니꼬샘이 제일 좋아요!",
+      "id": "7b47a379-b526-4865-ac00-4a86dec06584",
+      "name": "진",
+      "content": "bts도 코딩해요",
+      "password": "1234"
+    },
+    {
+      "id": "f1f77ff4-7037-4e4f-9d48-ad3a5ba264bd",
+      "name": "한빛",
+      "content": "나는야 코딩천재",
+      "password": "1234"
+    },
+    {
+      "id": "3d824e1e-e369-4c9f-9d9e-2b2919f20884",
+      "name": "하하",
+      "content": "무한도전",
+      "password": "1234"
+    },
+    {
+      "id": "24eb3d24-15fd-45fb-a60a-ebf4b3e76e39",
+      "name": "티코",
+      "content": "강아지도 코딩 가능한가요?",
+      "password": "1234"
+    },
+    {
+      "id": "e935d2cf-d5d1-4b7b-9da6-04bbc2890b6e",
+      "name": "하하",
+      "content": "하하",
       "password": "1234"
     }
   ]
