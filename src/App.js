@@ -23,15 +23,16 @@ const Wrap = styled.div`
   align-items: stretch;
   flex-basis: 100%;
   > div:nth-child(1) {
-    width: 10%;
-    background-color:#5585b5; 
+    width: 100px;
+    background-color:#fff; 
+    box-sizing: border-box;
   }
   > div:nth-child(2) {
-    width: 45%;
-    background-color: #53a8b6;
+    width: calc(50% - 50px);
+    background-color: tomato;
   }
   > div:nth-child(3) {
-    width: 45%;
+    width: calc(50% - 50px);
     background-color: #79c2d0;
   }
 
@@ -43,12 +44,13 @@ const Wrap = styled.div`
     > div:nth-child(1) {
       width: 100%;
       padding:10px;
-      background-color:#5585b5; 
+      display: flex;
+      
+      justify-content: space-between;
+      align-items: center;
     }
     > div:nth-child(2) {
       width: 100%;
-      padding:10px;
-      background-color: #53a8b6;
     }
     > div:nth-child(3) {
       width: 100%;
