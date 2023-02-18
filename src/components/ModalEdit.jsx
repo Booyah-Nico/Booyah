@@ -23,17 +23,18 @@ const ModalEdit = ({
     setModalEditOpen(false);
   };
 
-  const onTransmitHandler = (event) => {
-    event.preventDefault();
-    dispatch(__patchComment({ id: inputId, content: editContent }));
-    setModalEditOpen(false);
-  };
+  // const onTransmitHandler = (event) => {
+  //   event.preventDefault();
+  //   dispatch(__patchComment({ id: inputId, content: editContent }));
+  //   setModalEditOpen(false);
+  // };
 
   return (
     <>
       <form
-        onSubmit={() => {
+        onSubmit={(e) => {
           if (passwordInput) {
+            e.preventDefault();
             dispatch(__patchComment({ id: inputId, content: editContent }));
           } else {
             alert('비밀번호가 틀렸습니다');

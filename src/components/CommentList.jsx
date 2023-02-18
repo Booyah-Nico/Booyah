@@ -61,6 +61,7 @@ const CommentList = () => {
             />
             <button type='submit'>삭제</button>
           </form>
+
           <button name={comment.id} onClick={onModalOpenHandler}>
             수정
           </button>
