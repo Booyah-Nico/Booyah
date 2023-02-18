@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import ButtonSubmit from './ButtonSubmit';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   __getComments,
@@ -12,6 +13,7 @@ import AddComment from './AddComment';
 import ModalEdit from './ModalEdit';
 
 const CommentList = () => {
+  const buttonName = '삭제';
   const dispatch = useDispatch();
   const { isLoading, error, comments } = useSelector((state) => state.comments);
   console.log(comments);
@@ -67,7 +69,9 @@ const CommentList = () => {
                     setPasswordInput(value);
                   }}
                 />
-                <button type='submit'>삭제</button>
+                <ButtonSubmit
+                  type='submit'
+                  buttonName={buttonName}></ButtonSubmit>
               </form>
 
               <button name={comment.id} onClick={onModalOpenHandler}>
@@ -114,6 +118,8 @@ const Wrap = styled.div`
 
 const CommentZone = styled.div`
   margin-top: 20px;
+  overflow-y: scroll;
+  height: calc(100% - 300px);
 `;
 const CommentBox = styled.div`
   border-bottom: 1px solid #4c4b4b;
@@ -133,15 +139,26 @@ const CommentBox = styled.div`
     }
   }
   > div:nth-child(2) {
+    > form {
+      > input {
+        background-color: transparent;
+        outline: 0;
+        border: 0;
+        border-bottom: 1px solid #4c4b4b;
+        padding: 3px;
+      }
+    }
   }
 `;
 
 const AddCommentBox = styled.div`
   position: absolute;
   bottom: 1rem;
+  width: calc(100% - 62px);
 
   @media screen and (max-width: 900px) {
     position: relative;
+    width: 100%;
     bottom: inherit;
     padding: 1rem 0 1rem 0;
   }

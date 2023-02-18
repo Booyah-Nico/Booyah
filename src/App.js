@@ -34,6 +34,7 @@ const Wrap = styled.div`
   > div:nth-child(3) {
     width: calc(50% - 50px);
     background-color: #434242;
+    position: relative;
   }
 
   /* 미디어쿼리 */
