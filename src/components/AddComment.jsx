@@ -46,7 +46,7 @@ const AddComment = () => {
         />
         <input
           type='text'
-          placeholder='니꼬에쌤게 한마디!'
+          placeholder='니꼬쌤에게 한마디!'
           onChange={(event) => {
             const { value } = event.target;
             setContents(value);

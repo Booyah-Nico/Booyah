@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { act } from 'react-dom/test-utils';
 
 //__getComments
 export const __getComments = createAsyncThunk(
@@ -34,7 +33,6 @@ export const __deleteComment = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       await axios.delete(`http://localhost:3001/comments/${payload}`);
-      console.log('페이로드', payload);
       return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
