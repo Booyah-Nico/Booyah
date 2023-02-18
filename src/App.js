@@ -29,7 +29,7 @@ const Wrap = styled.div`
   }
   > div:nth-child(2) {
     width: calc(50% - 50px);
-    background-color: tomato;
+    background-color: #575757;
   }
   > div:nth-child(3) {
     width: calc(50% - 50px);

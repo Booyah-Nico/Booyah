@@ -31,7 +31,7 @@ const Nico = () => {
         <p>NICO'SAM quote of the day</p>
         <p>{selectData}</p>
       </TextBox>
-      <Profile src="91065408_537519927170457_1118354486306453202_n-removebg.png" alt="" />
+      <Profile src="profile.jpg" alt="" />
     </Wrap>
   )
 }
