@@ -47,7 +47,11 @@ export const __patchComment = createAsyncThunk(
   'comments/patcheComments',
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.patch('http://localhost:3001/comments', payload);
+      const data = await axios.patch(
+        `http://localhost:3001/comments/${payload.id}`,
+        payload
+      );
+      console.log(data);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -112,8 +116,12 @@ export const CommentsSlice = createSlice({
       state.isLoading = true;
     },
     [__patchComment.fulfilled]: (state, action) => {
-      state.isLoading = true;
-      state.comments.content = action.payload.content;
+      state.isLoading = false;
+      let newCont = state.comments.find(
+        (item) => item.id === action.payload.id
+      );
+      //id로 찾고, 찾은 객체만 바꿔줌(content)
+      newCont.content = action.payload.content;
     },
     [__patchComment.rejected]: (state, action) => {
       state.isLoading = false;
