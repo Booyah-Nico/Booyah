@@ -1,10 +1,28 @@
 {
   "comments": [
     {
-      "id": "920ad106-8cb2-41c5-8e5e-a05997994d07",
-      "name": "멍충이",
-      "content": "ㅋㅋㅋㅋ",
+      "id": "2672df1f-5b16-4751-90e8-db2acf3bc7e1",
+      "name": "티코",
+      "content": "하하",
       "password": "123"
+    },
+    {
+      "id": "04952f88-4476-4d2c-8d89-3fdc069320bf",
+      "name": "샤인",
+      "content": "크크",
+      "password": "8"
+    },
+    {
+      "id": "b5a83b48-fcb2-4d0f-857c-90ea56ebbb0c",
+      "name": "한빛",
+      "content": "메롱",
+      "password": "1"
+    },
+    {
+      "id": "880fe5f2-50d8-4e38-9581-2cf9dd989713",
+      "name": "히히",
+      "content": "니꼬샘 고마워용\n\n",
+      "password": "1"
     }
   ]
 }
