@@ -13,7 +13,6 @@ const ModalEdit = ({ modalId, setModalEditOpen }) => {
       setInputId(modalId);
     }
   }, [modalId]);
-  console.log('모달아이디는?', modalId);
 
   const closeHandler = () => {
     setModalEditOpen(false);

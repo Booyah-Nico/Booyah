@@ -44,7 +44,6 @@ const CommentList = () => {
             삭제
           </button>
 
-          {/* 💥수정모드💥 */}
           {editMode ? null : (
             <button name={comment.id} onClick={onModalOpenHandler}>
               수정
