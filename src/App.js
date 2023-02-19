@@ -6,25 +6,25 @@ import CommentList from './components/CommentList';
 
 const App = () => {
   return (
-    <Wrap> 
+    <Wrap>
       <Nav />
       <Nico />
       <CommentList />
     </Wrap>
-  )
-}
+  );
+};
 
 export default App;
 
 const Wrap = styled.div`
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: stretch;
   flex-basis: 100%;
   > div:nth-child(1) {
     width: 100px;
-    background-color:#fff; 
+    background-color: #fff;
     box-sizing: border-box;
   }
   > div:nth-child(2) {
@@ -33,7 +33,8 @@ const Wrap = styled.div`
   }
   > div:nth-child(3) {
     width: calc(50% - 50px);
-    background-color: #79c2d0;
+    background-color: #434242;
+    position: relative;
   }
 
   /* 미디어쿼리 */
@@ -43,9 +44,9 @@ const Wrap = styled.div`
 
     > div:nth-child(1) {
       width: 100%;
-      padding:10px;
+      padding: 10px;
       display: flex;
-      
+
       justify-content: space-between;
       align-items: center;
     }
@@ -54,8 +55,6 @@ const Wrap = styled.div`
     }
     > div:nth-child(3) {
       width: 100%;
-      padding:10px;
-      background-color: #79c2d0;
     }
   }
-`
+`;

@@ -1,62 +1,63 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
 
 const Nico = () => {
-
-  let selectData
-  (function randomData(){
+  let selectData;
+  (function randomData() {
     const data = [
       "Don't forget to eat kimchi.",
-      "BOOYAH",
-      "Mother Fu... === 잘봐 얘들아"
-    ]
+      'BOOYAH',
+      'Mother Fu... === 잘봐 얘들아',
+      'Super Sexy!',
+    ];
 
-    selectData = data[Math.floor(Math.random()*data.length)]
+    selectData = data[Math.floor(Math.random() * data.length)];
   })();
 
-  useEffect(() => {
-    
-  }, [])
+  useEffect(() => {}, []);
 
   return (
     <Wrap>
       <TextBox>
         <h1>
-          HELLO, NICO'SAM<br />
+          HELLO, NICO'SAM
+          <br />
           <span>Nicolas Serrano Arevalo</span>
         </h1>
-        <span>
-          DEVELOPER / YOUTUBER
-        </span>
+        <span>DEVELOPER / YOUTUBER</span>
         <p>NICO'SAM quote of the day</p>
         <p>{selectData}</p>
       </TextBox>
-      <Profile src="profile.jpg" alt="" />
+      {/* <Profile src='profile.jpg' alt='' /> */}
     </Wrap>
-  )
-}
+  );
+};
 
-export default Nico
-
+export default Nico;
 
 const Wrap = styled.div`
   position: relative;
-`
+  width: 100%;
+  min-height: 100vh;
+  background: url(profile.jpg);
+  background-position: center;
+  background-size: cover;
+`;
 
 const TextBox = styled.div`
   position: absolute;
-  top:50%;
+  top: 50%;
   transform: translateY(-50%);
-  margin-left:10px;
+  margin-left: 10px;
   color: #fff;
   font-family: 'Oswald', sans-serif;
-  >h1{
+  > h1 {
     font-weight: 300;
-    >span {
+    > span {
       font-weight: 500;
     }
   }
-  >span {
+  > span {
     display: inline-block;
     border-bottom: 1px solid #7a7a7a;
     border-top: 1px solid #7a7a7a;
@@ -66,12 +67,12 @@ const TextBox = styled.div`
     text-transform: uppercase;
     font-size: 13px;
   }
-  >p{
+  > p {
     font-weight: 300;
   }
-`
+`;
 
 const Profile = styled.img`
   display: block;
   width: 100%;
-`
+`;
