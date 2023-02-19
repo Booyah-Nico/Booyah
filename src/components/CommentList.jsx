@@ -46,8 +46,6 @@ const CommentList = () => {
     setModalDeleteOpen(true);
     setDeleteId(event.target.name);
     setDeletePassword(event.target.value);
-    console.log(deletId);
-    console.log(deletePassword);
   };
 
   const onModalOpenHandler = (event) => {

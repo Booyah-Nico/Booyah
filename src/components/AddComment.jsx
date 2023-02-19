@@ -23,9 +23,6 @@ const AddComment = () => {
     } else if (password === '') {
       return alert('비밀번호를 입력해주세요');
     }
-    // if (maxlength > 5) {
-    //   return alert('최대 300자까지만 작성 가능합니다');
-    // }
     dispatch(
       __postComment({
         id: RandomNum,
