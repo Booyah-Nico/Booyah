@@ -6,54 +6,47 @@ import CommentList from './components/CommentList';
 
 const App = () => {
   return (
-    <Wrap> 
-      <Nav />
+    <Wrap>
       <Nico />
       <CommentList />
     </Wrap>
-  )
-}
+  );
+};
 
 export default App;
 
 const Wrap = styled.div`
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: stretch;
   flex-basis: 100%;
   > div:nth-child(1) {
-    width: 10%;
-    background-color:#5585b5; 
+    width: 40%;
+    background-color: #575757;
   }
   > div:nth-child(2) {
-    width: 45%;
-    background-color: #53a8b6;
-  }
-  > div:nth-child(3) {
-    width: 45%;
-    background-color: #79c2d0;
+    width: 60%;
+    background-color: #434242;
+    position: relative;
   }
 
   /* 미디어쿼리 */
   @media screen and (max-width: 900px) {
     display: block;
     height: auto;
-
     > div:nth-child(1) {
       width: 100%;
-      padding:10px;
-      background-color:#5585b5; 
+      min-height: 100vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     > div:nth-child(2) {
       width: 100%;
-      padding:10px;
-      background-color: #53a8b6;
     }
     > div:nth-child(3) {
       width: 100%;
-      padding:10px;
-      background-color: #79c2d0;
     }
   }
-`
+`;
