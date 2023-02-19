@@ -11,7 +11,7 @@ export const __getComments = createAsyncThunk(
   'comments/getComments',
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get(instance);
+      const data = await instance.get();
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -24,7 +24,7 @@ export const __postComment = createAsyncThunk(
   'comments/postComments',
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.post(instance, payload);
+      const data = await instance.post(payload);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -37,7 +37,7 @@ export const __deleteComment = createAsyncThunk(
   'comments/deleteComments',
   async (payload, thunkAPI) => {
     try {
-      await axios.delete(`instance/${payload}`);
+      await instance.delete(`/${payload}`);
       return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -50,7 +50,7 @@ export const __patchComment = createAsyncThunk(
   'comments/patcheComments',
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.patch(`instance/${payload.id}`, payload);
+      const data = await instance.patch(`/${payload.id}`, payload);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
