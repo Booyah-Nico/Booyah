@@ -1,3 +1,10 @@
 {
-  "comments": []
+  "comments": [
+    {
+      "id": "123",
+      "name": "티코",
+      "content": "헤헤헤",
+      "password": "111"
+    }
+  ]
 }
