@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ButtonSubmit from './ButtonSubmit';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   __getComments,
@@ -10,17 +9,28 @@ import {
 
 //컴포넌트
 import AddComment from './AddComment';
+import ModalDelete from './ModalDelete';
 import ModalEdit from './ModalEdit';
 
 const CommentList = () => {
-  const buttonName = '삭제';
   const dispatch = useDispatch();
   const { isLoading, error, comments } = useSelector((state) => state.comments);
   console.log(comments);
+
+  //패스워드
+  const [commentPassword, setCommentPassword] = useState('');
+
+  //삭제, 수정 모달오픈핸들러
+  const [modalDeleteOpen, setModalDeleteOpen] = useState(false);
   const [modalEditOpen, setModalEditOpen] = useState(false);
+
+  //삭제, 수정 모달 id
+  const [deletId, setDeleteId] = useState('');
   const [modalId, setModalId] = useState('');
 
-  const [passwordInput, setPasswordInput] = useState('');
+  //삭제, 수정 비밀번호
+  const [deletePassword, setDeletePassword] = useState('');
+  const [patchPassword, setPatchPassword] = useState('');
 
   useEffect(() => {
     dispatch(__getComments());
@@ -33,9 +43,18 @@ const CommentList = () => {
     return <div>{error.message}</div>;
   }
 
+  const onDeleteHandler = (event) => {
+    setModalDeleteOpen(true);
+    setDeleteId(event.target.name);
+    setDeletePassword(event.target.value);
+    console.log(deletId);
+    console.log(deletePassword);
+  };
+
   const onModalOpenHandler = (event) => {
     setModalEditOpen(true);
     setModalId(event.target.name);
+    setPatchPassword(event.target.value);
   };
 
   return (
@@ -52,43 +71,41 @@ const CommentList = () => {
             </div>
 
             <div>
-              <form
-                onSubmit={() => {
-                  if (passwordInput === comment.password) {
-                    dispatch(__deleteComment(comment.id));
-                  } else if (passwordInput !== comment.password) {
-                    alert('비밀번호를 입력하세요.');
-                  }
-                }}>
-                <input
-                  type='password'
-                  placeholder='비밀번호를 입력하세요.'
-                  key={comment.id}
-                  onChange={(e) => {
-                    const { value } = e.target;
-                    setPasswordInput(value);
-                  }}
-                />
-                <ButtonSubmit
-                  type='submit'
-                  buttonName={buttonName}></ButtonSubmit>
-              </form>
-
-              <button name={comment.id} onClick={onModalOpenHandler}>
+              <button
+                name={comment.id}
+                value={comment.password}
+                onClick={onDeleteHandler}>
+                삭제
+              </button>
+              <button
+                name={comment.id}
+                value={comment.password}
+                onClick={onModalOpenHandler}>
                 수정
               </button>
             </div>
           </CommentBox>
         ))}
       </CommentZone>
-
+      {modalDeleteOpen ? (
+        <ModalDelete
+          key={deletId}
+          deletId={deletId}
+          commentPassword={commentPassword}
+          deletePassword={deletePassword}
+          setDeletePassword={setDeletePassword}
+          setModalDeleteOpen={setModalDeleteOpen}
+        />
+      ) : null}
       {modalEditOpen ? (
         <ModalEdit
           key={modalId}
           modalId={modalId}
-          passwordInput={passwordInput}
-          setPasswordInput={setPasswordInput}
-          setModalEditOpen={setModalEditOpen}></ModalEdit>
+          commentPassword={commentPassword}
+          patchPassword={patchPassword}
+          setPatchPassword={setPatchPassword}
+          setModalEditOpen={setModalEditOpen}
+        />
       ) : null}
 
       <AddCommentBox>
@@ -122,6 +139,7 @@ const CommentZone = styled.div`
   height: calc(100% - 300px);
 `;
 const CommentBox = styled.div`
+  position: relative;
   border-bottom: 1px solid #4c4b4b;
   padding-bottom: 15px;
   margin-top: 15px;
@@ -139,14 +157,26 @@ const CommentBox = styled.div`
     }
   }
   > div:nth-child(2) {
-    > form {
-      > input {
-        background-color: transparent;
-        outline: 0;
-        border: 0;
-        border-bottom: 1px solid #4c4b4b;
-        padding: 3px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    button {
+      background-color: transparent;
+      border: 0;
+      outline: 0;
+      color: #aaa;
+      border: 1px solid #aaa;
+      padding: 2px 5px;
+      cursor: pointer;
+      &:hover {
+        border: 1px solid #f19a37;
+        background-color: #f19a37;
+        color: #fff;
       }
+    }
+    > button:first-child {
+      margin-right: 10px;
     }
   }
 `;

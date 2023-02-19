@@ -1,59 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { __patchComment } from '../redux/modules/CommentsSlice';
+import styled from 'styled-components';
 import ButtonSubmit from './ButtonSubmit';
+import { __deleteComment } from '../redux/modules/CommentsSlice';
 
-const ModalEdit = ({ modalId, setModalEditOpen, patchPassword }) => {
-  const buttonName = '완료';
+const ModalDelete = ({ deletId, setModalDeleteOpen, deletePassword }) => {
+  const buttonName = '삭제';
   const dispatch = useDispatch();
 
-  const [editContent, setEditContent] = useState('');
-  const [inputId, setInputId] = useState('');
-  const [editInputPassword, setEditInputPassword] = useState('');
-
-  useEffect(() => {
-    if (modalId) {
-      setInputId(modalId);
-    }
-  }, [modalId]);
+  const [inputPassword, setInputPassword] = useState('');
 
   const closeHandler = () => {
-    setModalEditOpen(false);
+    setModalDeleteOpen(false);
+    console.log(deletePassword);
   };
-
   return (
     <Overlay>
       <ModalWrap>
         <Form
           onSubmit={(e) => {
-            if (editInputPassword === patchPassword) {
+            if (inputPassword === deletePassword) {
               e.preventDefault();
-              dispatch(__patchComment({ id: inputId, content: editContent }));
-              setModalEditOpen(false);
+              dispatch(__deleteComment(deletId));
+              setModalDeleteOpen(false);
             } else {
               alert('비밀번호를 입력해주세요');
             }
           }}>
           <input
-            type='text'
-            placeholder='수정할 내용을 입력해주세요'
-            onChange={(event) => {
-              const { value } = event.target;
-              setEditContent(value);
-            }}
-          />
-          <input
             type='password'
             placeholder='비밀번호를 입력해주세요'
             onChange={(event) => {
               const { value } = event.target;
-              setEditInputPassword(value);
+              setInputPassword(value);
             }}
           />
           <div className='ButtonWrap'>
-            <ButtonSubmit type='submit' buttonName={buttonName}></ButtonSubmit>
-            <button className='buttonEdit' onClick={closeHandler}>
+            <ButtonSubmit type='submit' buttonName={buttonName} />
+            <button className='buttonEdit' type='button' onClick={closeHandler}>
               취소
             </button>
           </div>
@@ -63,7 +47,8 @@ const ModalEdit = ({ modalId, setModalEditOpen, patchPassword }) => {
   );
 };
 
-export default ModalEdit;
+export default ModalDelete;
+
 const Overlay = styled.div`
   position: absolute;
   width: 100%;
