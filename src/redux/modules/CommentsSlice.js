@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-//instance
+//instance url
 const instance = axios.create({
   baseURL: process.env.REACT_APP_COMMENTS,
 });
