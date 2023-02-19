@@ -12,7 +12,7 @@ export const __getComments = createAsyncThunk(
   'comments/getComments',
   async (thunkAPI) => {
     try {
-      const data = await axios.get('/comments');
+      const data = await axios.get('https://booyah.herokuapp.com/comments');
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -25,7 +25,10 @@ export const __postComment = createAsyncThunk(
   'comments/postComments',
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.post('/comments', payload);
+      const data = await axios.post(
+        'https://booyah.herokuapp.com/comments',
+        payload
+      );
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -38,7 +41,7 @@ export const __deleteComment = createAsyncThunk(
   'comments/deleteComments',
   async (payload, thunkAPI) => {
     try {
-      await axios.delete(`/comments/${payload}`);
+      await axios.delete(`https://booyah.herokuapp.com/comments/${payload}`);
       return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -51,7 +54,10 @@ export const __patchComment = createAsyncThunk(
   'comments/patcheComments',
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.patch(`/comments/${payload.id}`, payload);
+      const data = await axios.patch(
+        `https://booyah.herokuapp.com/comments/${payload.id}`,
+        payload
+      );
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
