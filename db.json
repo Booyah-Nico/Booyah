@@ -1,10 +1,16 @@
 {
   "comments": [
     {
-      "id": "9570a37a-223d-4769-a5b7-bc0285924c59",
+      "id": "5ef943cb-657e-4a89-8f51-4738e6e6b3a8",
       "name": "티코",
-      "content": "멍멍멍!",
-      "password": "222"
+      "content": "헤헤헤",
+      "password": "111"
+    },
+    {
+      "id": "197139d6-d421-4b13-9915-b3e82422ee47",
+      "name": "샤인",
+      "content": "멍멍!",
+      "password": "555"
     }
   ]
 }

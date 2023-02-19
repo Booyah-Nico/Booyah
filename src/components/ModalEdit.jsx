@@ -30,9 +30,15 @@ const ModalEdit = ({ modalId, setModalEditOpen, patchPassword }) => {
             if (editInputPassword === patchPassword) {
               e.preventDefault();
               dispatch(__patchComment({ id: inputId, content: editContent }));
+
               setModalEditOpen(false);
-            } else {
+              alert('내용이 수정되었습니다');
+            } else if (editInputPassword === '') {
+              e.preventDefault();
               alert('비밀번호를 입력해주세요');
+            } else {
+              e.preventDefault();
+              alert('비밀번호가 틀렸습니다');
             }
           }}>
           <input
