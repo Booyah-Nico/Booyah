@@ -8,6 +8,7 @@ const Nico = () => {
       "Don't forget to eat kimchi.",
       'BOOYAH',
       'Mother Fu... === 잘봐 얘들아',
+      'Super Sexy!',
     ];
 
     selectData = data[Math.floor(Math.random() * data.length)];

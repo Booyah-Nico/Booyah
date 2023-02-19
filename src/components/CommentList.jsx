@@ -15,7 +15,6 @@ import ModalEdit from './ModalEdit';
 const CommentList = () => {
   const dispatch = useDispatch();
   const { isLoading, error, comments } = useSelector((state) => state.comments);
-  console.log(comments);
 
   //패스워드
   const [commentPassword, setCommentPassword] = useState('');
@@ -59,7 +58,7 @@ const CommentList = () => {
 
   return (
     <Wrap>
-      <h2>니꼬샘에게 인사를 남겨봐요!</h2>
+      <h2>니꼬쌤에게 인사를 남겨봐요!</h2>
       <p></p>
 
       <CommentZone>
@@ -137,6 +136,9 @@ const CommentZone = styled.div`
   margin-top: 20px;
   overflow-y: scroll;
   height: calc(100% - 300px);
+  @media screen and (max-width: 900px) {
+    height: 400px;
+  }
 `;
 const CommentBox = styled.div`
   position: relative;
@@ -155,12 +157,14 @@ const CommentBox = styled.div`
       line-height: 25px;
       font-weight: bold;
     }
+    p.content {
+      margin-top: 10px;
+    }
   }
   > div:nth-child(2) {
     position: absolute;
     right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
     button {
       background-color: transparent;
       border: 0;
@@ -190,6 +194,6 @@ const AddCommentBox = styled.div`
     position: relative;
     width: 100%;
     bottom: inherit;
-    padding: 1rem 0 1rem 0;
+    padding: 3rem 0 1rem 0;
   }
 `;

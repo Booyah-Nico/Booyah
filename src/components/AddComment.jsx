@@ -16,6 +16,16 @@ const AddComment = () => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
+    if (name === '') {
+      return alert('이름을 입력해주세요');
+    } else if (content === '') {
+      return alert('내용을 입력해주세요');
+    } else if (password === '') {
+      return alert('비밀번호를 입력해주세요');
+    }
+    // if (maxlength > 5) {
+    //   return alert('최대 300자까지만 작성 가능합니다');
+    // }
     dispatch(
       __postComment({
         id: RandomNum,
@@ -51,6 +61,7 @@ const AddComment = () => {
           <input
             type='password'
             placeholder='비밀번호를 입력해주세요!'
+            autoComplete='on'
             onChange={(event) => {
               const { value } = event.target;
               setPassword(value);
@@ -82,13 +93,18 @@ const Form = styled.form`
   textarea.textArea {
     display: block;
     width: 100%;
+    height: 5em;
     background-color: transparent;
     border: 0;
     outline: 0;
+    resize: none;
     border-bottom: 1px solid #4c4b4b;
     padding: 5px;
     margin-bottom: 10px;
     box-sizing: border-box;
+    ::placeholder {
+      vertical-align: middle;
+    }
   }
 `;
 
