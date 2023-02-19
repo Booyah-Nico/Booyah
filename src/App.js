@@ -7,7 +7,6 @@ import CommentList from './components/CommentList';
 const App = () => {
   return (
     <Wrap>
-
       <Nico />
       <CommentList />
     </Wrap>
@@ -23,11 +22,11 @@ const Wrap = styled.div`
   align-items: stretch;
   flex-basis: 100%;
   > div:nth-child(1) {
-    width: 50%;
+    width: 40%;
     background-color: #575757;
   }
   > div:nth-child(2) {
-    width: 50%;
+    width: 60%;
     background-color: #434242;
     position: relative;
   }
