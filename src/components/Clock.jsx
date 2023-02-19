@@ -27,7 +27,11 @@ const Clock = () => {
 export default Clock;
 
 const TimeNow = styled.p`
-  text-align: center;
-  font-size: 1.4em;
+  font-size: 3rem;
   font-weight: bold;
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 `;
