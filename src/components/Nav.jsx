@@ -1,23 +1,25 @@
 import React from 'react'
-import Clock from './Clock'
 import styled from 'styled-components'
 
 const Nav = () => {
   return (
-    <div>
+    <Wrap>
         <Logo src="logo.svg" alt="" />
-        <Clock></Clock>
-    </div>
+    </Wrap>
   )
 }
 
 export default Nav
 
+const Wrap = styled.div`
+  position: absolute;
+  top: 10px;
+`
 
 const Logo = styled.img`
   width: 100%;
   max-width: 100px;
   display: block;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
 `

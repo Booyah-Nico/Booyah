@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import Nav from './Nav';
+import Clock from './Clock'
 
 const Nico = () => {
   let selectData;
@@ -18,6 +20,8 @@ const Nico = () => {
 
   return (
     <Wrap>
+      <Shild></Shild>
+      <Nav></Nav>
       <TextBox>
         <h1>
           HELLO, NICO'SAM
@@ -28,7 +32,7 @@ const Nico = () => {
         <p>NICO'SAM quote of the day</p>
         <p>{selectData}</p>
       </TextBox>
-      {/* <Profile src='profile.jpg' alt='' /> */}
+      <Clock></Clock>
     </Wrap>
   );
 };
@@ -44,6 +48,13 @@ const Wrap = styled.div`
   background-size: cover;
 `;
 
+const Shild = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+`
+
 const TextBox = styled.div`
   position: absolute;
   top: 50%;
@@ -53,6 +64,7 @@ const TextBox = styled.div`
   font-family: 'Oswald', sans-serif;
   > h1 {
     font-weight: 300;
+    font-size: 3rem;
     > span {
       font-weight: 500;
     }
@@ -65,10 +77,12 @@ const TextBox = styled.div`
     padding: 15px 0;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 1.2rem;
+    margin: 15px 0px;
   }
   > p {
     font-weight: 300;
+    font-size: 1.2rem;
   }
 `;
 
