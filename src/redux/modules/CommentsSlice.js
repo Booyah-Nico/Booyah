@@ -9,7 +9,7 @@ const instance = axios.create({
 //__getComments
 export const __getComments = createAsyncThunk(
   'comments/getComments',
-  async (payload, thunkAPI) => {
+  async (thunkAPI) => {
     try {
       const data = await instance.get();
       return thunkAPI.fulfillWithValue(data.data);
