@@ -10,7 +10,7 @@ import axios from 'axios';
 //__getComments
 export const __getComments = createAsyncThunk(
   'comments/getComments',
-  async (thunkAPI) => {
+  async (payload, thunkAPI) => {
     try {
       const data = await axios.get('https://booyah.herokuapp.com/comments');
       return thunkAPI.fulfillWithValue(data.data);
