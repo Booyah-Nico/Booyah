@@ -12,7 +12,6 @@ const ModalDelete = ({ deletId, setModalDeleteOpen, deletePassword }) => {
 
   const closeHandler = () => {
     setModalDeleteOpen(false);
-    console.log(deletePassword);
   };
   return (
     <Overlay>
@@ -23,8 +22,12 @@ const ModalDelete = ({ deletId, setModalDeleteOpen, deletePassword }) => {
               e.preventDefault();
               dispatch(__deleteComment(deletId));
               setModalDeleteOpen(false);
-            } else {
+            } else if (inputPassword === '') {
+              e.preventDefault();
               alert('비밀번호를 입력해주세요');
+            } else {
+              e.preventDefault();
+              alert('비밀번호가 틀렸습니다');
             }
           }}>
           <input
