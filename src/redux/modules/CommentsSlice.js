@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 axios.defaults.baseURL = process.env.REACT_APP_COMMENTS;
-axios.defaults.withCredentials = true;
 
 //instance url
 // const instance = axios.create({
@@ -39,7 +38,7 @@ export const __deleteComment = createAsyncThunk(
   'comments/deleteComments',
   async (payload, thunkAPI) => {
     try {
-      await axios.delete(`comments/${payload}`);
+      await axios.delete(`/comments/${payload}`);
       return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -52,7 +51,7 @@ export const __patchComment = createAsyncThunk(
   'comments/patcheComments',
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.patch(`comments/${payload.id}`, payload);
+      const data = await axios.patch(`/comments/${payload.id}`, payload);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
