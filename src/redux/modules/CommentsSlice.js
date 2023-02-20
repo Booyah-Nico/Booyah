@@ -1,10 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
-axios.defaults.baseURL = process.env.REACT_APP_COMMENTS;
+// import axios from 'axios';
+// axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+
+import instance from '../../shared/Request';
 
 //instance url
 // const instance = axios.create({
-//   baseURL: process.env.REACT_APP_COMMENTS,
+//   baseURL: process.env.REACT_APP_API_URL,
 // });
 
 //__getComments
@@ -12,7 +14,7 @@ export const __getComments = createAsyncThunk(
   'comments/getComments',
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.get('/comments');
+      const data = await instance.get('comments');
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -25,7 +27,7 @@ export const __postComment = createAsyncThunk(
   'comments/postComments',
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.post('/comments', payload);
+      const data = await instance.post('comments', payload);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -38,7 +40,7 @@ export const __deleteComment = createAsyncThunk(
   'comments/deleteComments',
   async (payload, thunkAPI) => {
     try {
-      await axios.delete(`/comments/${payload}`);
+      await instance.delete(`comments/${payload}`);
       return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -51,7 +53,7 @@ export const __patchComment = createAsyncThunk(
   'comments/patcheComments',
   async (payload, thunkAPI) => {
     try {
-      const data = await axios.patch(`/comments/${payload.id}`, payload);
+      const data = await instance.patch(`comments/${payload.id}`, payload);
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
